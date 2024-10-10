@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="/images/dashboard.png">
+</head>
+<body>
+  <div class = "dashboard">
+    <h1>Transaction Dashboard</h1>
+  </div>
+    <form action="/transactions" method="get">
+        <div class="btns">
+            <input type="search" name="searchQuery" placeholder="Search Transaction" class="search">        
+            <select name="month" id="months">
+                <option value="0" <%= selectedMonth === "0" ? "selected" : "" %>>Select Month</option>
+                <option value="01" <%= selectedMonth === "01" ? "selected" : "" %>>January</option>
+                <option value="02" <%= selectedMonth === "02" ? "selected" : "" %>>February</option>
+                <option value="03" <%= selectedMonth === "03" ? "selected" : "" %>>March</option>
+                <option value="04" <%= selectedMonth === "04" ? "selected" : "" %>>April</option>
+                <option value="05" <%= selectedMonth === "05" ? "selected" : "" %>>May</option>
+                <option value="06" <%= selectedMonth === "06" ? "selected" : "" %>>June</option>
+                <option value="07" <%= selectedMonth === "07" ? "selected" : "" %>>July</option>
+                <option value="08" <%= selectedMonth === "08" ? "selected" : "" %>>August</option>
+                <option value="09" <%= selectedMonth === "09" ? "selected" : "" %>>September</option>
+                <option value="10" <%= selectedMonth === "10" ? "selected" : "" %>>October</option>
+                <option value="11" <%= selectedMonth === "11" ? "selected" : "" %>>November</option>
+                <option value="12" <%= selectedMonth === "12" ? "selected" : "" %>>December</option>
+            </select>
+        </div>
+    </form>
+    <table>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Sold</th>
+          <th>Images</th>
+        </tr>
+        <% for(let record of allRecords) { %>
+        <tr>
+          <td><%= record.id %></td>
+          <td><%= record.title %></td>
+          <td><%= record.description %></td>
+          <!-- <td><%= record.price.toFixed(2) %></td> -->
+          <td><%= record.price %></td>
+          <td><%= record.category %></td>
+          <td><%= record.sold %></td>
+          <td><img src="<%= record.image %>" class="table-img" alt="record-img"></td>
+        </tr>
+        <% } %>
+      </table>
+      <form action="/transactions" class="pagination-form" method="get">
+        <input type = "hidden" name="page" value="<%= currentPage %>" class="pageInput">
+        <input type="hidden" name="month" value="<%= selectedMonth %>" class="monthInput">
+        <div class="pagination-btns">
+
+          <span class="left">Page No: <%= currentPage %></span>
+          <button type="button" class="previousbtn">Previous</button>
+          <button type="button" class="nextbtn" data-total="<%= totalPages %>">Next</button>
+
+          <span class="right">Total Pages: <%= totalPages %></span>
+        </div>
+      </form>
+      
+<br>
+<hr>
+
+      <%if(selectedMonth!=0){%>
+        <div class="statistics">
+          <h2 class = "stat-month">Statistics - <%= selectedMonthName %></h2>
+          <div class = "stats">
+            <div class = "stats-detail">
+              <span>Total Sale</span>
+              <span class = "rightst"><b><%= statistics.totalSales.toFixed(2) || 0 %></b></span>
+            </div>
+            <div class = "stats-detail">
+              <span>Total sold items</span>
+              <span class = "rightst"><b><%= statistics.totalSoldItems || 0 %></b></span>
+            </div>
+            <div class = "stats-detail">
+              <span>Total not sold items</span>
+              <span class = "rightst"><b><%= statistics.totalNotSoldItems || 0 %></b></span> 
+            </div>
+          </div>
+        </div>
+        
+
+        <div class = "pie-chart">
+          <h2 class = "stat-month">Category Distribution - <%= selectedMonthName %></h2>
+          <canvas id="myPieChart"></canvas> <!-- Pie chart canvas -->
+      </div>
+
+      <div class="bar-chart">
+        <h2>Bar Chart Stats - <%= selectedMonthName %></h2>
+        <canvas id="myBarChart"></canvas> <!-- Bar chart canvas -->
+      </div>
+      <%}%>
+
+      
+
+    <script>
+      const ctx = document.getElementById('myPieChart').getContext('2d');
+  
+      const myChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+              labels: <%- JSON.stringify(categoryData.map(item => item._id)) %>,
+              datasets: [{
+                  label: 'Category Distribution',
+                  data: <%- JSON.stringify(categoryData.map(item => item.itemCount)) %>, 
+                  backgroundColor: ['red', 'blue', 'green', 'yellow', 'purple', 'orange'],
+              }]
+          },
+          options: {
+              responsive: true,
+          }
+      });
+
+
+      const ctxBar = document.getElementById('myBarChart').getContext('2d');
+      const barChart = new Chart(ctxBar, {
+          type: 'bar',
+          data: {
+              labels: <%- JSON.stringify(barChartData.map(item => item._id)) %>, 
+              datasets: [{
+                  label: 'Total Sales',
+                  data: <%- JSON.stringify(barChartData.map(item => item.itemCount)) %>, 
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+
+  </script>
+  
+      <script src = "/js/script.js"></script>
+</body>
+</html>
