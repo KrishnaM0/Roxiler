@@ -45,7 +45,8 @@ app.get("/transactions", async (req, res) => {
     // // //
     const { data } = await axios.get('https://s3.amazonaws.com/roxiler.com/product_transaction.json');
     await Transactions.insertMany(data); 
-    // // //
+    // So execute these above two lines ones and then comment down then..
+    // As every new request will be coming to this same /transaction api/path..
     
     const searchQuery = req.query.searchQuery || ""; 
     const selectedMonth = req.query.month || "03";
