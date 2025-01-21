@@ -14,8 +14,8 @@
   </div>
     <form action="/transactions" method="get">
         <div class="btns">
-            <input type="search" name="searchQuery" placeholder="Search Transaction" class="search">        
-            <select name="month" id="months">
+            <input type="search" name="searchQuery" placeholder="Search Transaction" class="search">   
+            <select name="month" id="months" class="select">
                 <option value="0" <%= selectedMonth === "0" ? "selected" : "" %>>Select Month</option>
                 <option value="01" <%= selectedMonth === "01" ? "selected" : "" %>>January</option>
                 <option value="02" <%= selectedMonth === "02" ? "selected" : "" %>>February</option>
@@ -45,13 +45,13 @@
         </tr>
         <% for(let record of allRecords) { %>
         <tr>
-          <td><%= record.id %></td>
-          <td><%= record.title %></td>
-          <td><%= record.description %></td>
+          <td class="td"><%= record.id %></td>
+          <td class="td"><%= record.title %></td>
+          <td class="td"><%= record.description %></td>
           <!-- <td><%= record.price.toFixed(2) %></td> -->
-          <td><%= record.price %></td>
-          <td><%= record.category %></td>
-          <td><%= record.sold %></td>
+          <td class="td"><%= record.price %></td>
+          <td class="td"><%= record.category %></td>
+          <td class="td"><%= record.sold %></td>
           <td><img src="<%= record.image %>" class="table-img" alt="record-img"></td>
         </tr>
         <% } %>

@@ -1,7 +1,6 @@
 body {
     font-family: Arial, sans-serif;
     background-color: rgba(183, 237, 245, 0.45);
-    margin: 0.5rem;
     padding: 1rem;
 }
 
@@ -12,7 +11,6 @@ h1 {
 }
 
 table {
-    width: 100%;
     border-collapse: collapse;
     margin-top: 1.5rem;
     border-radius: 1rem;
@@ -154,8 +152,7 @@ input::placeholder {
     
 }
 .pie-chart{
-    height : 30rem;
-    width : 25rem;
+    width : 30%;
     margin : 2rem;
     padding : 2rem;
     margin-top: 3rem;
@@ -168,8 +165,7 @@ input::placeholder {
 .bar-chart{
     margin : 2rem;
     padding : 2rem;
-    width : 40rem;
-    height : 25rem;
+    width : 50%;
     background-color: #ebefdf;
     box-shadow: 0 0.15rem 0.6rem rgb(54, 53, 53);
     border-radius: 1rem;
@@ -216,8 +212,17 @@ input::placeholder {
     padding-right: 0.5rem;
     margin: auto;
 }
+.td{
+    font-size: 1rem;
+}
 
 @media (max-width : 1000px){
+    .bar-chart{
+        width: 70%;
+    }
+    .pie-chart{
+        width: 60%;
+    }
     .table-div{
         margin: 0.5rem;
         padding: 0.5rem;
@@ -231,10 +236,6 @@ input::placeholder {
         height : 4rem;
         margin: auto;
     }
-    .bar-chart{
-        width: 70%;
-        margin: auto;
-    }
 }
 @media (max-width : 780px){
     .dashboard h1{
@@ -243,5 +244,36 @@ input::placeholder {
     .dashboard{
         height : 3rem;
         margin: auto;
+    }
+}
+@media (max-width : 650px){
+    .bar-chart{
+        width: 80%;
+    }
+    .pie-chart{
+        width: 80%;
+    }
+    .statistics{
+        width : 80%;
+    }
+    .stats{
+        margin: auto;
+        width : 80%;
+    }
+    .btns{
+        display: block;
+    }
+    .search{
+        display: block;
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .select{
+        display: block;
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .dashboard{
+        width: 90%;
     }
 }
