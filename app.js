@@ -1,11 +1,15 @@
+if(process.env.NODE_ENV != "production") {
+    require("dotenv").config();
+};
+
 const express = require("express");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const app = express();
 const Transactions = require("./models/transactions.js");
 const path = require("path");
-
-mongoose.connect('mongodb://127.0.0.1:27017/ecommerce');
+const dburl = process.env.DBURL;
+mongoose.connect(dburl);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -35,6 +39,10 @@ function getMonthName(month) {
     ];
     return monthNames[Number(month) - 1];
 }
+
+app.get("/", (req, res)=>{
+    res.redirect("/transactions");
+});
 
 app.get("/transactions", async (req, res) => {
 

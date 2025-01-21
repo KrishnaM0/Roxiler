@@ -202,3 +202,46 @@ input::placeholder {
     justify-content: center;
     border-radius: 1rem;
 }
+.statistics{
+    margin: auto;
+}
+.pie-chart{
+    margin: auto;
+}
+.bar-chart{
+    margin: auto;
+}
+.table-div{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin: auto;
+}
+
+@media (max-width : 1000px){
+    .table-div{
+        margin: 0.5rem;
+        padding: 0.5rem;
+        overflow-x: auto;
+    }
+    .dashboard h1{
+        font-size: 1.5rem;
+        margin: auto;
+    }
+    .dashboard{
+        height : 4rem;
+        margin: auto;
+    }
+    .bar-chart{
+        width: 70%;
+        margin: auto;
+    }
+}
+@media (max-width : 780px){
+    .dashboard h1{
+        font-size: 1.2rem;
+    }
+    .dashboard{
+        height : 3rem;
+        margin: auto;
+    }
+}

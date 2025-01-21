@@ -32,7 +32,8 @@
             </select>
         </div>
     </form>
-    <table>
+    <div class="table-div">
+      <table>
         <tr>
           <th>ID</th>
           <th>Title</th>
@@ -55,6 +56,8 @@
         </tr>
         <% } %>
       </table>
+    </div>
+    
       <form action="/transactions" class="pagination-form" method="get">
         <input type = "hidden" name="page" value="<%= currentPage %>" class="pageInput">
         <input type="hidden" name="month" value="<%= selectedMonth %>" class="monthInput">
@@ -70,7 +73,7 @@
       
 <br>
 <hr>
-
+<br><br>
       <%if(selectedMonth!=0){%>
         <div class="statistics">
           <h2 class = "stat-month">Statistics - <%= selectedMonthName %></h2>
@@ -89,19 +92,20 @@
             </div>
           </div>
         </div>
-        
-
+        <br>
+        <br>
+        <br>
         <div class = "pie-chart">
           <h2 class = "stat-month">Category Distribution - <%= selectedMonthName %></h2>
           <canvas id="myPieChart"></canvas> <!-- Pie chart canvas -->
       </div>
-
+      <br><br><br>
       <div class="bar-chart">
         <h2>Bar Chart Stats - <%= selectedMonthName %></h2>
         <canvas id="myBarChart"></canvas> <!-- Bar chart canvas -->
       </div>
       <%}%>
-
+      <br><br>
       
 
     <script>
