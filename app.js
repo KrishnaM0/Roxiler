@@ -50,9 +50,12 @@ app.get("/transactions", async (req, res) => {
     // comment out these below two lines..Ones they are executed..
     // Otherwise the database will be continuesly inserted with the same datasets..
 
-    // const { data } = await axios.get('https://s3.amazonaws.com/roxiler.com/product_transaction.json');
-    // await Transactions.insertMany(data); 
-
+    // // //
+    const { data } = await axios.get('https://s3.amazonaws.com/roxiler.com/product_transaction.json');
+    await Transactions.insertMany(data); 
+    // So execute these above two lines ones and then comment down then..
+    // As every new request will be coming to this same /transaction api/path..
+    
     const searchQuery = req.query.searchQuery || ""; 
     const selectedMonth = req.query.month || "03";
     let currentPage = Number(req.query.page) || 1;

@@ -1,8 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     background-color: rgba(183, 237, 245, 0.45);
-    margin: 0;
-    padding: 1.5rem;
+    margin: 0.5rem;
+    padding: 1rem;
 }
 
 h1 {
@@ -202,6 +202,7 @@ input::placeholder {
     justify-content: center;
     border-radius: 1rem;
 }
+<<<<<<< HEAD
 .statistics{
     margin: auto;
 }
@@ -245,3 +246,5 @@ input::placeholder {
         margin: auto;
     }
 }
+=======
+>>>>>>> 287166788840de7d1e8842cc2a0b7f1081be31c0
