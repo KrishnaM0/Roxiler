@@ -276,4 +276,26 @@ input::placeholder {
     .dashboard{
         width: 90%;
     }
+    .pagination-btns{
+        display: block;
+        text-align: center;
+    }
+    .left{
+        display: block;
+        text-align: center;
+    }
+    .previousbtn{
+        /* display: block; */
+        margin-top: 1rem;
+        margin: 0.5rem;
+    }
+    .nextbtn{
+        /* display: block; */
+        margin-bottom: 1rem;
+        margin: 0.5rem;
+    }
+    .right{
+        display: block;
+        text-align: center;
+    }
 }
