@@ -48,4 +48,4 @@ Transaction Dashboard is designed to simplify financial data analysis by offerin
 
 ---
 
-<p>Live Line: - https://transactiondashboard.onrender.com</p>
+<p>Live Link: - https://transactiondashboard.onrender.com</p>
